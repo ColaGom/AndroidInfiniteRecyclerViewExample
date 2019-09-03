@@ -55,12 +55,12 @@ class AutoScrollableRecyclerView @JvmOverloads constructor(
     }
 
     private fun pauseAutoScroll() {
-        handler.removeMessages(WHAT_SCROLL)
+        scrollHandler.removeMessages(WHAT_SCROLL)
     }
 
-    private fun resumeAutoScroll() {
-        handler.removeMessages(WHAT_SCROLL)
-        handler.sendEmptyMessageDelayed(WHAT_SCROLL, delayMillis)
+    fun resumeAutoScroll() {
+        scrollHandler.removeMessages(WHAT_SCROLL)
+        scrollHandler.sendEmptyMessageDelayed(WHAT_SCROLL, delayMillis)
     }
 
     fun scrollNext() {
@@ -69,6 +69,7 @@ class AutoScrollableRecyclerView @JvmOverloads constructor(
                 createScroller(layoutManager.findLastVisibleItemPosition() + 1)
             )
         }
+        scrollHandler.sendEmptyMessageDelayed(WHAT_SCROLL, delayMillis)
     }
 
     private class ScrollHandler(autoScrollableRecyclerView: AutoScrollableRecyclerView) :
