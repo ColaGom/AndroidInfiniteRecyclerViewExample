@@ -8,7 +8,7 @@
 
 
     <com.colagom.infiniterv.AutoScrollableRecyclerView
-            android:id="@+id/rv_news"
+            android:id="@+id/rv_cat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -22,6 +22,6 @@
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_news" />
+            app:layout_constraintTop_toBottomOf="@id/rv_cat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

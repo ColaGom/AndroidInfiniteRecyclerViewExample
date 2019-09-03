@@ -2,6 +2,7 @@ package com.colagom.infiniterv
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.PagerSnapHelper
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,15 +20,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        rv_news.adapter = carouselAdapter
-        carouselAdapter.setItems(dummyNotices)
+
+        rv_cat.run {
+            PagerSnapHelper().attachToRecyclerView(this)
+            adapter = carouselAdapter.apply {
+                setItems(dummyNotices)
+            }
+            resumeAutoScroll()
+        }
     }
 
     private fun catClicked(cat: Cat) {
         tv.text = "clicked ${cat.linkUrl}"
     }
 }
-
 
 data class Cat(
     override val imgUrl: String,
