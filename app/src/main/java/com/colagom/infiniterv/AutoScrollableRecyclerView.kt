@@ -46,8 +46,14 @@ class AutoScrollableRecyclerView @JvmOverloads constructor(
 
     override fun dispatchTouchEvent(e: MotionEvent?): Boolean {
         when (e?.action) {
-            MotionEvent.ACTION_UP -> resumeAutoScroll()
-            MotionEvent.ACTION_DOWN -> pauseAutoScroll()
+            MotionEvent.ACTION_UP -> {
+                resumeAutoScroll()
+                parent.requestDisallowInterceptTouchEvent(true)
+            }
+            MotionEvent.ACTION_DOWN -> {
+                pauseAutoScroll()
+                parent.requestDisallowInterceptTouchEvent(false)
+            }
         }
         parent.requestDisallowInterceptTouchEvent(true)
 
