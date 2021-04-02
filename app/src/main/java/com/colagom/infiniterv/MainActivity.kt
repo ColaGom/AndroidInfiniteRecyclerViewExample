@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
             PagerSnapHelper().attachToRecyclerView(this)
             adapter = carouselAdapter.apply {
                 setItems(dummyNotices)
+                addItemDecoration(CircularIndicatorDecoration(this@MainActivity))
             }
             resumeAutoScroll()
         }
